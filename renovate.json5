@@ -1,0 +1,24 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:recommended",
+    ":configMigration",
+    "abandonments:recommended",
+  ],
+  rangeStrategy: "update-lockfile",
+  automerge: false,
+  updateInternalDeps: true,
+  packageRules: [
+    {
+      matchManagers: ["npm"],
+      groupName: "npm dependencies",
+    },
+    {
+      matchPackageNames: ["/some-specific/"], // will create manual work
+      matchManagers: ["npm"],
+      groupName: "specific",
+    },
+  ],
+  separateMajorMinor: false,
+}
+
